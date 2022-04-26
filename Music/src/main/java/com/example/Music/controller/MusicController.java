@@ -1,6 +1,7 @@
 package com.example.Music.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,8 +34,14 @@ public class MusicController {
         
         //GET
         @GetMapping("/music")
-        public List<Music> readEmployees() {
+        public List<Music> readTracks() {
             return musicService.getTracks();
+        }
+        
+        //GET BY ID
+        @GetMapping("/music/{id}")
+        public Optional<Music> readTrack(@PathVariable(value="id") Long id) {
+        	return musicService.getTrack(id);
         }
         
         //PATCH

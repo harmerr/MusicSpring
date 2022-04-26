@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.Music.model.Music;
 import com.example.Music.repository.MusicRepository;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MusicService {
@@ -23,6 +24,11 @@ public class MusicService {
             return musicRepository.findAll();
         }
 
+        //READ BY ID
+        public Optional<Music> getTrack(Long id) {
+        	return musicRepository.findById(id);
+        }
+        
         // DELETE
         public void deleteTrack(Long id) {
             musicRepository.deleteById(id);
